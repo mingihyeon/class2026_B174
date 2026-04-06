@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>비 내리는 장면</title>
+
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: linear-gradient(#2c3e50, #4ca1af);
+        height: 100vh;
+    }
+
+    /* 빗방울 */
+    .rain {
+        position: absolute;
+        width: 2px;
+        height: 15px;
+        background: rgba(255,255,255,0.6);
+        animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+        0% {
+            transform: translateY(-100px);
+        }
+        100% {
+            transform: translateY(100vh);
+        }
+    }
+
+    /* 물 웅덩이 효과 */
+    .ground {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100px;
+        background: rgba(0,0,0,0.2);
+    }
+
+    /* 텍스트 */
+    .text {
+        position: absolute;
+        top: 40%;
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-size: 32px;
+        font-family: sans-serif;
+        opacity: 0.8;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="text">🌧️ 비가 내리고 있어요...</div>
+<div class="ground"></div>
+
+<script>
+    // 빗방울 생성
+    for (let i = 0; i < 200; i++) {
+        let rain = document.createElement("div");
+        rain.classList.add("rain");
+
+        rain.style.left = Math.random() * window.innerWidth + "px";
+        rain.style.animationDuration = (0.5 + Math.random()) + "s";
+        rain.style.opacity = Math.random();
+
+        document.body.appendChild(rain);
+    }
+</script>
+
+</body>
+</html>
